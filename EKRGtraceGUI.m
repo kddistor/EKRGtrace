@@ -1,3 +1,19 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%                       
+%   ERKGtraceGUI          
+%   by Kevin Distor 
+%   modified by John Albeck
+%   University of California - Davis
+%                       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Description                                                              
+%       GUI for EKRGtraceMod.m                                                                                                                                                               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Dependencies
+%           -Same folder as EKRGtraceMod.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 function varargout = EKRGtraceGUI(varargin)
 % EKRGTRACEGUI MATLAB code for EKRGtraceGUI.fig
 %      EKRGTRACEGUI, by itself, creates a new EKRGTRACEGUI or raises the existing
