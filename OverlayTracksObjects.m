@@ -1,4 +1,21 @@
-
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%                       
+%   ERKGtrace           
+%   by John Albeck 
+%   modified by Kevin Distor
+%   University of California - Davis
+%                       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Description                                                              
+%       Creates avi file of movie with overlayed tracks.                                                                         
+%                                                                         
+%                                                                                                      
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Dependencies
+%           -Matlab current folder should be F:\livecell-part1
+%   
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function OverlayTracksObjects (namelist, cbound, r1, c1);
 %Loop through Frames
