@@ -156,15 +156,7 @@ for t=1:length(timepoints)
             bwi=~bw;
             bwif=imfill(bwi,'holes');
             [bwb bwl]=bwboundaries(bwif);
-%             [cmax2 rmax2]=size(bwl);
             if t==startingpoints(n)%handles the case for the first frame in which this point is being tracked
-%                 regionNum=bwl(r(n)-r1,c(n)-c1);
-%                 if r(n) > rmax2
-%                     r(n) = rmax2;
-%                 end
-%                 if c(n)> cmax2
-%                     c(n)=cmax2;
-%                 end
                 regionNum=bwl(r(n),c(n));
                 regionArea=sum(sum(bwl==regionNum)); % adding the number of pixels within the current region to find area
                 sizeChange=1;
