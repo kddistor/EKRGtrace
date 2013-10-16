@@ -1,8 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %                       
 %   ERKGtrace           
-%   by John Albeck 
-%   modified by Kevin Distor
+%   by Kevin Distor and John Albeck 
 %   University of California - Davis
 %                       
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
