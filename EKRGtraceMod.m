@@ -21,14 +21,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Load pointpickerfile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function EKRGtraceMod(ppoints, basenameSet, firsttime, lasttime, tpad, tpos, CFPB,YFPB) 
+function [namelist, cbound, rvalw, r1, c1] = EKRGtraceMod(ppoints, basenameSet, firsttime, lasttime, tpad, tpos, CFPB, YFPB) 
 fid = fopen(ppoints,'r');
-[a, c, r, startingpoints, e, f] = textread(ppoints, '%s %s %s %s %s %s', 30, 'headerlines', 1);
-%x-coordinates
-c = str2num(cell2mat(c));
-%y-coordinates
-r = str2num(cell2mat(r));
-startingpoints = str2num(cell2mat(startingpoints));
+[a, c, r, startingpoints, e, f] = textread(ppoints, '%s %d %d %d %s %s', 'headerlines', 1);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Set default parameters
@@ -42,7 +37,7 @@ minArea=100;
 maxArea=700;
 minDiameter=8;                                          %for smoothing
 dilationSize=7; 
-timepoints=str2num(firsttime):str2num(lasttime)
+timepoints=str2num(firsttime):str2num(lasttime);
 CFPbackground=CFPB;										%Modify
 YFPbackground=YFPB;										%Modify
 CFPbackgroundMC=0.606;
@@ -55,6 +50,7 @@ nmatrix=zeros(length(timepoints),length(startingpoints));
 cbound=cell(length(timepoints),length(startingpoints));
 nindex(length(timepoints),length(startingpoints)).PixelList=[];
 
+
 CFPbase=basenameSet{1};
 YFPbase=basenameSet{2};
 RFPbase=basenameSet{3};
@@ -66,7 +62,7 @@ RFPbase=basenameSet{3};
 
 
 for t=1:length(timepoints)
-    ti=timepoints(t)
+    ti=timepoints(t);
     
     tstr=['000' num2str(ti)];
     tstr=tstr((end-(tpad-1)):end);
@@ -79,16 +75,42 @@ for t=1:length(timepoints)
     filenameRFP=RFPbase;
     filenameRFP(tpos:(tpos+tpad))=tstr;
     
-    %Find the farthest points from pointpicker
-    c1 = min(c) - 30;
-    c2 = max(c) + 30;
-    r1 = min(r) - 30;
-    r2 = max(r) + 30;
+    namelist(t)=cellstr(filenameCFP);
+    
+    %Find the farthest points from pointpicker % Add ifs to keep within
+    %image bounds.  
+    imageTest=imread(filenameCFP);
+    [rmax cmax]=size(imageTest);
+    
+    c1 = min(c)-30;
+    if c1 < 0
+        c1=0;
+    end
+    c2 = max(c)+30;
+    if c2 > cmax
+        c2 = cmax;
+    end
+    r1 = min(r)-30;
+    if r1 < 0
+        r1 = 0;
+    end
+    r2 = max(r)+30;
+    if r2 > rmax
+        r2 = rmax;
+    end
+ 
+%     c1 = min(c);
+%     c2 = max(c);
+%     r1 = min(r);
+%     r2 = max(r);
     
     %Load images with constrained boundaries
     currentCFP=imread(filenameCFP, 'PixelRegion', {[r1,r2],[c1,c2]});	
     currentYFP=imread(filenameYFP, 'PixelRegion', {[r1,r2],[c1,c2]});	
     currentRFP=imread(filenameRFP, 'PixelRegion', {[r1,r2],[c1,c2]});
+%     currentCFP=imread(filenameCFP);	
+%     currentYFP=imread(filenameYFP);	
+%     currentRFP=imread(filenameRFP);
     currentRatio=double(currentCFP-CFPbackground)./double(currentYFP-YFPbackground);
     currentCFPmc=double(currentCFP)./mean(mean(currentCFP));
     currentYFPmc=double(currentYFP)./mean(mean(currentYFP));
@@ -134,8 +156,16 @@ for t=1:length(timepoints)
             bwi=~bw;
             bwif=imfill(bwi,'holes');
             [bwb bwl]=bwboundaries(bwif);
+%             [cmax2 rmax2]=size(bwl);
             if t==startingpoints(n)%handles the case for the first frame in which this point is being tracked
-                regionNum=bwl(r(n)-r1,c(n)-c1);
+%                 regionNum=bwl(r(n)-r1,c(n)-c1);
+%                 if r(n) > rmax2
+%                     r(n) = rmax2;
+%                 end
+%                 if c(n)> cmax2
+%                     c(n)=cmax2;
+%                 end
+                regionNum=bwl(r(n),c(n));
                 regionArea=sum(sum(bwl==regionNum)); % adding the number of pixels within the current region to find area
                 sizeChange=1;
             elseif nindex(t-1,n).PixelList(:,1)==0;%handles the case where cell has been lost
@@ -144,8 +174,8 @@ for t=1:length(timepoints)
                 regionArea=0;
                 sizeChange=1;
             else
-                px=nindex(t-1,n).PixelList(:,1); %get x pixels from previous frame
-                py=nindex(t-1,n).PixelList(:,2); %get y pixels from previous frame
+                px=nindex(t-1,n).PixelList(:,1)-c1; %get x pixels from previous frame KNOWN ISSUE: should correct for possible shift in r1,r2,c1,c2 between frames
+                py=nindex(t-1,n).PixelList(:,2)-r1; %get y pixels from previous frame
                 lind=sub2ind(size(bwl),py,px);  %convert pixels from xy to indices
                 regionNum=mode(bwl(lind));
                 if regionNum==0
@@ -187,8 +217,8 @@ for t=1:length(timepoints)
             cbound(t,n)=cb(1);
             
             % calculate and store mean fret ratio for whole cyto/nuc region
-            cx=plc.PixelList(:,1);
-            cy=plc.PixelList(:,2);
+            cx=plc.PixelList(:,1)+c1;
+            cy=plc.PixelList(:,2)+r1;
             clind=sub2ind(size(bwl),cy,cx);
             ratioRegion=currentRatio(clind);
             rvalw(t,n)=mean(currentRatio(clind));
@@ -202,4 +232,5 @@ for t=1:length(timepoints)
     end
     
 end
-save(['data_xy'  '.mat']);
+
+save(['data_xy' ppoints '.mat']);
