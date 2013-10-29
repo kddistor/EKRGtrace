@@ -1,22 +1,22 @@
 #!/bin/bash 
-padding=3
-ifpadded=1
-firsttime=1
-lasttime=20
-separator_pos=1
-order_pos=2
-slideposition=xy10
-CFPB=214
-YFPB=206
-basename=2012-03-10-ekrg
-ch1n=c1
-ch2n=c2
-ch3n=c3
-ch4n=c4
-extension=tif
-sizeThres=[7,25]
-maxI=4095
-invertLog=1
+padding=3						#eg t001=3, t1 = 1
+ifpadded=1						#eg t0001=1, t1=2,
+firsttime=1						#first timepoint
+lasttime=20						#last timepoint
+separator_pos=1					#1 = none, 2 = -, 3 = _
+order_pos=5						#1=txyc, 2=tcxy, 3=xytc, 4=xyct, 5=cxyt, 6=ctxy
+slideposition=xy02				#eg xy10, s12
+CFPB=258						#CFP Background
+YFPB=256						#YFP Background
+basename=20130226onix2			#eg 2010-03-10-ekrg_
+ch1n=c1							#eg CFP, w1CFP
+ch2n=c2							#eg YFP, w2YFP
+ch3n=c3							#eg RFP, w3mRFP1-mCherry
+ch4n=c4							#eg c4, w4DTIC
+extension=tif					#eg tif, TIF
+sizeThres=[7,25]				#[minNucDiameterSize, maxNucDiameterSize]
+maxI=4095						#eg 4095 for 12bit
+invertLog=1						#1 if EKAR/cells with nucleus and boundaries, 2 for full cells
 # for i in ~/folder/.tif*;
 # do cd "$i"
 if [ $invertLog = 1 ]; then
