@@ -1,27 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%                       
-%   ERKGtrace           
-%   by John Albeck 
-%   modified by Kevin Distor
-%   University of California - Davis
-%                       
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Description                                                              
-%       Tracks movement of cells from tif stack images for EKAR or cells with                                                                       
-%       nucleus                                                                         
-%                                                                                                      
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%       Dependencies
-%           -Matlab current folder should be F:\livecell-part1
-%           -Point picker file shoudl be in current folder.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Load pointpickerfile
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 function [namelist, cbound, valcube, r1, c1] = EKRGtraceWithSeed(namePre, namePost, tstr, CFPB, YFPB, sizeThres, maxI, invertLog) 
 %load M
 filenameCFP=[namePre{1} tstr{1} namePost{1}]
