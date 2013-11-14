@@ -11,6 +11,9 @@ Dependencies:
 
 ### EKRGTraceGui.m
 
+Dependencies:
+* EKRGtraceMod.m
+
 Usage:
 `EKRGTraceGUI`
 
@@ -18,6 +21,11 @@ The EKRG Trace GUI is an easy to use GUI for cell tracking and analysis.
 Requires a picked points(point picker file) before running.
 
 Input your file criteria and the point picker file in the specifying fields and click run to run the analysis.
+
+### EKRGtraceMod.m
+
+Usage:
+`[namelist, cbound, rvalw, r1, c1] = EKRGtraceMod(ppoints, preT, posT, tstr, CFPB, YFPB)`
 
 ### Overlaytracks.m
 
