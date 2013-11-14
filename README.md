@@ -63,11 +63,15 @@ Usage:
 
 Gets the name of the files and stores into vector for analysis.
 
+### autofindpoint.m
+
+Segments the image by cells.
 
 ### EKRGtraceWithSeed.m
 
 Dependencies:
 * values from getNames.m
+* autofindpoint.m
 
 Usage:
 `function [namelist, cbound, valcube, r1, c1] = EKRGtraceWithSeed(namePre, namePost, tstr, CFPB, YFPB, sizeThres)`
@@ -78,6 +82,7 @@ Tracks cells with visible nucleus and cytoplasm.
 
 Dependencies:
 * values from getNames.m
+* autofindpoint.m
 
 Usage:
 `function [namelist, cbound, valcube, r1, c1] = NCTraceWithSeed(namePre, namePost, tstr, CFPB, YFPB, sizeThres)`
