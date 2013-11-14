@@ -118,4 +118,10 @@ Gets the name for Intensity processing.
 
 ### avgIntensityTimecourse2.m
 
+Dependencies:
+* values from avgIntensityTimecourse1.m
+
+Usage:
+`[data1 data2 data3 data4]=dataAvgIntensity(nameHCube)`
+
 Gets the average intnsity over each time point for every cell. 
