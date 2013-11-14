@@ -67,6 +67,9 @@ Gets the name of the files and stores into vector for analysis.
 
 Modified from [SomponnatSingleCellAnalysis](https://github.com/somponnat/Somponnat_SingleCellAnalysis)
 
+Usage:
+`[binary coords] = autofindpoint(M,sizeThres)`
+
 Segments the image by cells.
 
 ### EKRGtraceWithSeed.m
@@ -93,6 +96,25 @@ Tracks cells with nuclear cells.
 
 ### avgIntensityTimecourse1.m
 
+Usage:
+`[nameHCube] = avgIntensityFull(tpadding, ifpadded, tvec, separator_pos, order_pos, xys, xyvec, xypadding, basename, ch1n, ch2n, ch3n, ch4n, extension)`
+
+* tpadding: 3 = 001;
+* ifpadded: 1 - padded, 2 - not padded.
+* tvec: '1:time'
+* separator: 1 - none, 2 - '-', 3 - '_'
+* order:  1 - 't...xy...c...', 2 - 't...c...xy...', 3 - 'xy...t...c...',4 - 'xy...c...t...', 5 - 'c...xy...t...', 6 - 'c...t...xy...'
+* xys: 's' or 'xy'
+* xyvec: '1:slidenumber'
+* xypadding: 3 = 001
+* basename: 'basename'
+* ch1n: '1st Channel'
+* ch2n: '2nd Channel'
+* ch3n: '3rd Channel'
+* ch4n: '4th Channel'
+* extension:  eg. 'tif' or 'TIF'
+
+Gets the name for Intensity processing.  
 
 ### avgIntensityTimecourse2.m
 
