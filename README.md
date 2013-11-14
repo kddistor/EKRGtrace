@@ -39,7 +39,13 @@ Usage:
 
 This creates a video of the cells and the cell tracks. The save file will be in the folder where the analysis was done with the name 'firstframe.avi'
 
+### getNames.m
+
+Usage:
+`[namePre, namePost, tstr, CFPB, YFPB, sizeThres] = getNames(padding, ifpadded, firsttime, lasttime, separator_pos, order_pos, slideposition, CFPB, YFPB, basename, ch1n, ch2n, ch3n, ch4n, extension, sizeThres)'
+
+
 ### EKRGtraceWithSeed.m
 
 Usage:
-`
+`function [namelist, cbound, valcube, r1, c1] = EKRGtraceWithSeed(namePre, namePost, tstr, CFPB, YFPB, sizeThres)`
