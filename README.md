@@ -65,6 +65,8 @@ Gets the name of the files and stores into vector for analysis.
 
 ### autofindpoint.m
 
+Modified from [SomponnatSingleCellAnalysis](https://github.com/somponnat/Somponnat_SingleCellAnalysis)
+
 Segments the image by cells.
 
 ### EKRGtraceWithSeed.m
@@ -88,3 +90,10 @@ Usage:
 `function [namelist, cbound, valcube, r1, c1] = NCTraceWithSeed(namePre, namePost, tstr, CFPB, YFPB, sizeThres)`
 
 Tracks cells with nuclear cells.
+
+### avgIntensityTimecourse1.m
+
+
+### avgIntensityTimecourse2.m
+
+Gets the average intnsity over each time point for every cell. 
