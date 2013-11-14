@@ -24,7 +24,7 @@ Input your file criteria and the point picker file in the specifying fields and 
 Usage:
 `OverlayTracksObjects (namelist, cbound, r1, c1)`
 
-This creates a video of the tracked cells. 
+This creates a video of the cells and the cell tracks. The save file will be in the folder where the analysis was done with the name '<firstframe>.avi'
 
 ### EKRGtraceWithSeed.m
 
