@@ -61,10 +61,25 @@ Usage:
 * extension:  eg. 'tif' or 'TIF'
 * sizeThres: [minNucDiameterSize, maxNucDiameterSize]
 
-Gets the name of the files and stores into vector for analysis
+Gets the name of the files and stores into vector for analysis.
 
 
 ### EKRGtraceWithSeed.m
 
+Dependencies:
+* values from getNames.m
+
 Usage:
 `function [namelist, cbound, valcube, r1, c1] = EKRGtraceWithSeed(namePre, namePost, tstr, CFPB, YFPB, sizeThres)`
+
+Tracks cells with visible nucleus and cytoplasm.
+
+### NCtraceWithSeed.m
+
+Dependencies:
+* values from getNames.m
+
+Usage:
+`function [namelist, cbound, valcube, r1, c1] = NCTraceWithSeed(namePre, namePost, tstr, CFPB, YFPB, sizeThres)`
+
+Tracks cells with nuclear cells.
