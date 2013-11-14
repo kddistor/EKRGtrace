@@ -27,7 +27,12 @@ Input your file criteria and the point picker file in the specifying fields and 
 Usage:
 `[namelist, cbound, rvalw, r1, c1] = EKRGtraceMod(ppoints, preT, posT, tstr, CFPB, YFPB)`
 
+This script takes in the values from the GUI and runs the tracking and analysis.
+
 ### Overlaytracks.m
+
+Dependencies:
+* values from EKRGtraceMod.m
 
 Usage:
 `OverlayTracksObjects (namelist, cbound, r1, c1)`
@@ -36,4 +41,5 @@ This creates a video of the cells and the cell tracks. The save file will be in 
 
 ### EKRGtraceWithSeed.m
 
-This script is what runs after value are put in the GUI.
+Usage:
+`
