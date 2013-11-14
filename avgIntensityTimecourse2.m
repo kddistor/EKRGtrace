@@ -32,3 +32,4 @@ for j=timepoints
         
     end
 end
+save[['IntensityData' currentImage '.mat']);
