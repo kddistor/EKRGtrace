@@ -44,22 +44,22 @@ This creates a video of the cells and the cell tracks. The save file will be in 
 Usage:
 `[namePre, namePost, tstr, CFPB, YFPB, sizeThres] = getNames(padding, ifpadded, firsttime, lasttime, separator_pos, order_pos, slideposition, CFPB, YFPB, basename, ch1n, ch2n, ch3n, ch4n, extension, sizeThres)`
 
-%   padding: 3 = 001;
-%   ifpadded: 1 - padded, 2 - not padded.
-%   firstime: first timepoint
-%   lasttime: last timepoint
-%   separator: 1 - none, 2 - '-', 3 - '_'
-%   order:  1 - 't...xy...c...', 2 - 't...c...xy...', 3 - 'xy...t...c...',4 - 'xy...c...t...', 5 - 'c...xy...t...', 6 - 'c...t...xy...'
-%   slideposition: 's12'
-%   CFPB: CFP BACKGROUND
-%   YFPB: YFP BACKGROUND
-%   basename: 'basename'
-%   ch1n: '1st Channel'
-%   ch2n: '2nd Channel'
-%   ch3n: '3rd Channel'
-%   ch4n: '4th Channel'
-%   extension:  eg. 'tif' or 'TIF'
-%   sizeThres: [minNucDiameterSize, maxNucDiameterSize]
+* padding: 3 = 001;
+* ifpadded: 1 - padded, 2 - not padded.
+* firstime: first timepoint
+* lasttime: last timepoint
+* separator: 1 - none, 2 - '-', 3 - '_'
+* order:  1 - 't...xy...c...', 2 - 't...c...xy...', 3 - 'xy...t...c...',4 - 'xy...c...t...', 5 - 'c...xy...t...', 6 - 'c...t...xy...'
+* slideposition: 's12'
+* CFPB: CFP BACKGROUND
+* YFPB: YFP BACKGROUND
+* basename: 'basename'
+* ch1n: '1st Channel'
+* ch2n: '2nd Channel'
+* ch3n: '3rd Channel'
+* ch4n: '4th Channel'
+* extension:  eg. 'tif' or 'TIF'
+* sizeThres: [minNucDiameterSize, maxNucDiameterSize]
 
 Gets the name of the files and stores into vector for analysis
 
