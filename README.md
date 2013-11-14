@@ -8,10 +8,18 @@ Script and GUI to trace cell movement from a tiff image stack
 
 ### EKRGTraceGui.m
 
-The EKRG Trace GUI is an easy to use GUI for cell tracking and analysis. 
+To run, type command:
+`EKRGTraceGUI`
 
-Input your files in the specifying fields and it'll track the cells
+The EKRG Trace GUI is an easy to use GUI for cell tracking and analysis.
+Requires a picked points(point picker file) before running.
 
-## EKRGtraceWithSeed.m
+Input your file criteria and the point picker file in the specifying fields and click run to run the analysis.
+
+### Overlaytracks.m
+
+This creates a video of the tracked cells. 
+
+### EKRGtraceWithSeed.m
 
 This script is what runs after value are put in the GUI.
