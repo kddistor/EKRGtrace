@@ -50,6 +50,8 @@ end
 
 tmcube=zeros(size(lmcube));
 nextTMid=1;
+
+%first pass through; connect only clear individual cells
 for t=1:timepoints-1
     clm=lmcube(:,:,t);
     csm=smcube(:,:,t);
@@ -62,29 +64,39 @@ for t=1:timepoints-1
     
     for k=1:ncells
         currentpix=find(clm==k);
-        overlappix=nlm(currentpix);
-        target=mode(overlappix);
-        targetpix=find(nlm==target);
-        targetscore=mode(nsm(targetpix));
-        if targetscore==2
-            %link 
-            trackID=mode(ctm(currentpix));
-            if trackID==0
-                ctm(currentpix)=nextTMid;
-                trackID=nextTMid;
-                nextTMid=nextTMid+1;
+        if mode(csm(currentpix)==2)
+            overlappix=nlm(currentpix);
+            target=mode(overlappix);
+            targetpix=find(nlm==target);
+            targetscore=mode(nsm(targetpix));
+            if targetscore==2
+                %link 
+                trackID=mode(ctm(currentpix));
+                if trackID==0
+                    ctm(currentpix)=nextTMid;
+                    trackID=nextTMid;
+                    nextTMid=nextTMid+1;
+                end
+                ntm(targetpix)=trackID;
+            elseif targetscore==1
+                %reset current label to 3
+                csm(currentpix)=3;
+            elseif targetscore==0
+                %resetcurrent label to 4
+
             end
-            ntm(targetpix)=trackID;
-            
         end
     end
     if t==1
         tmcube(:,:,t)=ctm;
     end
-    tmcube(:,:,t+1)=ntm;
+    tmcube(:,:,t+1)=ntm; 
     
     
 end
+
+%second pass through; find likely merges; split them and add them to the
+%existing tracks
 
 
 
